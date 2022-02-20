@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: calculator-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: calculatorapi
+  template: 
+    metadata: # Dictionary
+      name: calculatorapi-pod
+      labels: # Dictionary 
+        app: calculatorapi      
+    spec:
+      containers: # List
+        - name: calculatorapi-container
+          image: pa1pocacr.azurecr.io/calculator:0.1
+          ports:
+            - containerPort: 80
+          env:
+          - name: AddApi
+            value: "http://addapi"
+          - name: SubApi
+            value: "http://subtractapi"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: addition-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: addapi
+  template:
+    metadata:
+      name: addapi-pod
+      labels:
+        app: addapi
+    spec:
+      containers:
+        - name: addapi-container
+          image: pa1pocacr.azurecr.io/additionapi:0.1
+          ports:
+            - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: subtraction-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: subtractapi
+  template:
+    metadata:
+      name: subtractapi-pod
+      labels:
+        app: subtractapi
+    spec:
+      containers:
+        - name: addapi-container
+          image: pa1pocacr.azurecr.io/subtraction:0.1
+          ports:
+            - containerPort: 80
+---

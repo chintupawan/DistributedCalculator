@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: calculator-loadbalancer
+  labels: 
+    app: calculatorapi
+spec:
+  type: LoadBalancer 
+  selector:
+    app: calculatorapi
+  ports: 
+    - port: 80
+      targetPort: 80
