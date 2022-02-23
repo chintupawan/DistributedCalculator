@@ -37,6 +37,26 @@
                 "/consoleloggerparameters:NoSummary"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "bridge-to-kubernetes.resource",
+            "type": "bridge-to-kubernetes.resource",
+            "resource": "calculator-loadbalancer",
+            "resourceType": "service",
+            "ports": [
+                5000
+            ],
+            "targetCluster": "pa1-poc-k8s",
+            "targetNamespace": "default",
+            "useKubernetesServiceEnvironmentVariables": false
+        },
+        {
+            "label": "bridge-to-kubernetes.compound",
+            "dependsOn": [
+                "bridge-to-kubernetes.resource",
+                "build"
+            ],
+            "dependsOrder": "sequence"
         }
     ]
 }

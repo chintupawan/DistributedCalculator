@@ -3,11 +3,22 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalculatorApi", "CalculatorApi\CalculatorApi.csproj", "{E6FD8568-22F2-40C4-A775-D06C529F3C9A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CalculatorApi", "CalculatorApi\CalculatorApi.csproj", "{E6FD8568-22F2-40C4-A775-D06C529F3C9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdditionApi", "AdditionApi\AdditionApi.csproj", "{732B10FD-F3D9-4FA7-90A7-26987E92B243}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdditionApi", "AdditionApi\AdditionApi.csproj", "{732B10FD-F3D9-4FA7-90A7-26987E92B243}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubtractionApi", "SubtractionApi\SubtractionApi.csproj", "{1CC3982B-375F-4230-9AAC-223B02177577}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubtractionApi", "SubtractionApi\SubtractionApi.csproj", "{1CC3982B-375F-4230-9AAC-223B02177577}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "K8Manifests", "K8Manifests", "{AA10D8F5-0DB7-482F-B531-A86B5D87C50F}"
+	ProjectSection(SolutionItems) = preProject
+		commands.ps1 = commands.ps1
+		K8Manifets\manifests.yaml = K8Manifets\manifests.yaml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{10F38395-96E4-4995-BAF2-202B0EE133DF}"
+	ProjectSection(SolutionItems) = preProject
+		ReadMe.md = ReadMe.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

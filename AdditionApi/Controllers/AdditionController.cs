@@ -10,9 +10,9 @@ namespace AdditionApi.Controllers
 
         [Route("add")]
         [HttpGet]
-        public IActionResult Add(double a, double b)
+        public double Add(double a, double b)
         {
-            return Ok(new { result = a+b});
+            return a+b;
         }
     }
 }

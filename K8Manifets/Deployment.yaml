@@ -9,20 +9,20 @@ spec:
       app: calculatorapi
   template: 
     metadata: # Dictionary
-      name: calculatorapi-pod
+      name: calculatorapi
       labels: # Dictionary 
         app: calculatorapi      
     spec:
       containers: # List
         - name: calculatorapi-container
-          image: pa1pocacr.azurecr.io/calculator:0.1
+          image: pa1pocacr.azurecr.io/calculator:0.2
           ports:
             - containerPort: 80
           env:
           - name: AddApi
-            value: "http://addapi"
+            value: "http://addapi-service"
           - name: SubApi
-            value: "http://subtractapi"
+            value: "http://subtractapi-service"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -35,13 +35,13 @@ spec:
       app: addapi
   template:
     metadata:
-      name: addapi-pod
+      name: addapi
       labels:
         app: addapi
     spec:
       containers:
         - name: addapi-container
-          image: pa1pocacr.azurecr.io/additionapi:0.1
+          image: pa1pocacr.azurecr.io/additionapi:0.2
           ports:
             - containerPort: 80
 ---
@@ -56,13 +56,12 @@ spec:
       app: subtractapi
   template:
     metadata:
-      name: subtractapi-pod
+      name: subtractapi
       labels:
         app: subtractapi
     spec:
       containers:
-        - name: addapi-container
-          image: pa1pocacr.azurecr.io/subtraction:0.1
+        - name: subtractapi-container
+          image: pa1pocacr.azurecr.io/subtraction:0.2
           ports:
             - containerPort: 80
----

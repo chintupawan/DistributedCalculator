@@ -7,16 +7,23 @@ namespace CalculatorApi.Controllers
     [ApiController]
     public class CalculatorController : ControllerBase
     {
+        private readonly ILogger logger;
+
+        public CalculatorController()
+        {
+            //this.logger = logger;
+        }
 
         [Route("add")]
         [HttpGet]
         public async Task<double> Add(double a, double b)
         {
             string? addApi = Environment.GetEnvironmentVariable("AddApi");
-            string url = $"http://{addApi}/api/Addition";
+            string url = $"{addApi}";
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(url);
-            var result = await client.GetStringAsync($"/add?a={a}&b={b}");
+            //  logger.LogInformation($"********Service URL is {addApi}");
+            var result = await client.GetStringAsync($"/api/Addition/add?a={a}&b={b}");
 
             return Double.Parse(result);
         }
@@ -26,10 +33,10 @@ namespace CalculatorApi.Controllers
         public async Task<double> Subtract(double a, double b)
         {
             string? subApi = Environment.GetEnvironmentVariable("SubApi");
-            string url = $"http://{subApi}/api/Subtraction";
+            string url = $"{subApi}";
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(url);
-            var result = await client.GetStringAsync($"/subtract?a={a}&b={b}");
+            var result = await client.GetStringAsync($"/api/Subtraction/subtract?a={a}&b={b}");
 
             return Double.Parse(result);
         }
