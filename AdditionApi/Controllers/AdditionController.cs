@@ -12,6 +12,7 @@ namespace AdditionApi.Controllers
         [HttpGet]
         public double Add(double a, double b)
         {
+            DateOnly dateOnly = new DateOnly();
             return a+b;
         }
     }

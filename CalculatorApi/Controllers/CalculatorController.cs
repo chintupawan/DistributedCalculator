@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Dapr.Client;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CalculatorApi.Controllers
@@ -26,6 +27,21 @@ namespace CalculatorApi.Controllers
             var result = await client.GetStringAsync($"/api/Addition/add?a={a}&b={b}");
 
             return Double.Parse(result);
+        }
+
+        [Route("addDapr")]
+        [HttpGet]
+        public async Task<double> AddDapr(double a, double b)
+        {
+            var client = DaprClient.CreateInvokeHttpClient(appId: "add-api");
+            //string? addApi = Environment.GetEnvironmentVariable("AddApi");
+            //string url = $"{addApi}";
+            //HttpClient client = new HttpClient();
+            //client.BaseAddress = new Uri(url);
+            //  logger.LogInformation($"********Service URL is {addApi}");
+            var result = await client.GetStringAsync($"/api/Addition/add?a={a}&b={b}");
+
+            return double.Parse(result);
         }
 
         [Route("subtract")]
